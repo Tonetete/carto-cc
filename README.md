@@ -1,4 +1,23 @@
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/en/download/) >= 18
+- [NPM](https://www.npmjs.com/get-npm) >= 8
+- Generate a Google Maps API key: https://developers.google.com/maps/documentation/javascript/get-api-key
+- Generate a Google Map Id: https://developers.google.com/maps/documentation/javascript/get-api-key
+- Create a .env file in the root directory with the following variables:
+  - VITE_GOOGLE_MAP_ID="< your google map id >"
+  - VITE_GOOGLE_MAPS_API_KEY="< your google maps api key >"
+
+## Installation
+- npm install 
+- npm run dev
+- Access http://localhost:5173
+
+
+## Datasets
+
+The application will point to San Francisco Area once the map loads. You can find some sample GeoJsonLayer datasets to use with the application.
 
 ## Example of GeoJsonLayer datasets
 
