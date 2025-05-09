@@ -42,7 +42,7 @@ export const NodePanel: React.FC = () => {
           Layer
         </NodeSidebar>
         <NodeSidebar
-          connectorPositions={["left", "bottom", "right"]}
+          connectorPositions={["left", "left", "right"]}
           onDragStart={(event) => onDragStart(event, TypeOfNode.Intersection)}
           draggable
         >

@@ -69,31 +69,28 @@ export const EditorTemplate: React.FC<{}> = () => {
     event.dataTransfer.dropEffect = "move";
   }, []);
 
-  const onNodeDrop = useCallback(
-    (event: React.DragEvent<HTMLDivElement>) => {
-      const nodeType = event.dataTransfer.getData("application/reactflow");
-      if (!nodeType) return;
+  const onNodeDrop = useCallback((event: React.DragEvent<HTMLDivElement>) => {
+    const nodeType = event.dataTransfer.getData("application/reactflow");
+    if (!nodeType) return;
 
-      const position = screenToFlowPosition({
-        x: event.clientX,
-        y: event.clientY,
-      });
+    const position = screenToFlowPosition({
+      x: event.clientX,
+      y: event.clientY,
+    });
 
-      const data: NodeData = { label: nodeType };
-      if (nodeType === TypeOfNode.Source) data.url = "";
+    const data: NodeData = { label: nodeType };
+    if (nodeType === TypeOfNode.Source) data.url = "";
 
-      setNodes((nds) => [
-        ...nds,
-        {
-          id: crypto.randomUUID(),
-          data,
-          position,
-          type: nodeType,
-        },
-      ]);
-    },
-    [screenToFlowPosition, setNodes],
-  );
+    setNodes((nds) => [
+      ...nds,
+      {
+        id: crypto.randomUUID(),
+        data,
+        position,
+        type: nodeType,
+      },
+    ]);
+  }, []);
 
   const onConnect = useCallback(
     (params: Connection) => {

@@ -26,42 +26,45 @@ const Wrapper = styled.div`
   cursor: grab;
 `;
 
-const Connector = styled.div<{ position: string }>`
+const Connector = styled.div<{
+  side: "left" | "right" | "top" | "bottom";
+  offset: number;
+}>`
   position: absolute;
   width: 10px;
   height: 10px;
   background-color: #0f172a;
   border-radius: 50%;
 
-  ${({ position }) =>
-    position === "left" &&
+  ${({ side, offset }) =>
+    side === "left" &&
     css`
-      top: 50%;
       left: -6px;
+      top: ${offset}%;
       transform: translateY(-50%);
     `}
 
-  ${({ position }) =>
-    position === "right" &&
+  ${({ side, offset }) =>
+    side === "right" &&
     css`
-      top: 50%;
       right: -6px;
+      top: ${offset}%;
       transform: translateY(-50%);
     `}
 
-  ${({ position }) =>
-    position === "top" &&
+  ${({ side, offset }) =>
+    side === "top" &&
     css`
       top: -6px;
-      left: 50%;
+      left: ${offset}%;
       transform: translateX(-50%);
     `}
 
-  ${({ position }) =>
-    position === "bottom" &&
+  ${({ side, offset }) =>
+    side === "bottom" &&
     css`
       bottom: -6px;
-      left: 50%;
+      left: ${offset}%;
       transform: translateX(-50%);
     `}
 `;
@@ -71,13 +74,24 @@ export const NodeSidebar: React.FC<NodeSidebarProps> = ({
   onDragStart,
   draggable = false,
   children,
-}) => {
+}: NodeSidebarProps) => {
+  const sideCount: Record<string, number> = {};
+  const connectorsWithOffset = connectorPositions.map((side) => {
+    const count = sideCount[side] || 0;
+    sideCount[side] = count + 1;
+    return { side, index: count };
+  });
+
   return (
     <Wrapper onDragStart={onDragStart} draggable={draggable}>
       {children}
-      {connectorPositions.map((pos) => (
-        <Connector key={pos} position={pos} />
-      ))}
+      {connectorsWithOffset.map(({ side, index }) => {
+        const total = sideCount[side];
+        const offset = ((index + 1) / (total + 1)) * 100;
+        return (
+          <Connector key={`${side}-${index}`} side={side} offset={offset} />
+        );
+      })}
     </Wrapper>
   );
 };
