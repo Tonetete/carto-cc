@@ -8,10 +8,11 @@ import { Edge, Node } from "@xyflow/react";
 import { PickingInfo } from "@deck.gl/core";
 import { Button } from "@atoms/Button/Button";
 import { TooltipDialog } from "@atoms/TooltipDialog/TooltipDialog";
-import { Header } from "@molecules/Header/Header.js";
+import { Header } from "@molecules/Header/Header";
 import { useReactFlowStore } from "@hooks/useReactFlowStore";
 import { buildGeoLayer } from "@utils/geoLayer";
 import { TypeOfNode } from "@types/diagram";
+import { getEnv } from "@utils/env";
 
 interface DeckGLOverlayProps {
   nodes: Node[];
@@ -22,8 +23,7 @@ interface DeckGLOverlayProps {
 const DEFAULT_CENTER = { lat: 37.7749, lng: -122.4194 };
 const DEFAULT_ZOOM = 10;
 
-const GOOGLE_MAP_ID = import.meta.env.VITE_GOOGLE_MAP_ID;
-const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+const { GOOGLE_MAP_ID, GOOGLE_MAPS_API_KEY } = getEnv();
 
 const MapContainer = styled.div`
   width: 100vw;

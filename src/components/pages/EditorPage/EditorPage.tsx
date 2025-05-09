@@ -4,7 +4,7 @@ import { EditorTemplate } from "@templates/EditorTemplate/EditorTemplate";
 import { Header } from "@molecules/Header/Header";
 import { NodePanel } from "@organisms/NodePanel/NodePanel";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@atoms/Button/Button.js";
+import { Button } from "@atoms/Button/Button";
 
 const Wrapper = styled.div`
   display: flex;
