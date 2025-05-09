@@ -15,7 +15,7 @@ const TooltipWrapper = styled.div<{ top: number; left: number }>`
   background: white;
   padding: 10px;
   max-width: 400px;
-  border: 1px solid #ccc;
+  border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 6px;
   font-size: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);

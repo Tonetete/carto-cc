@@ -9,8 +9,8 @@ interface NodeSidebarProps {
 }
 
 const Wrapper = styled.div`
-  background-color: #ffffff;
-  border: 2px solid #0f172a;
+  background-color: ${({ theme }) => theme.colors.background};
+  border: 2px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 12px;
   padding: 24px;
   height: 200px;
@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   justify-content: center;
   font-weight: 600;
   font-size: 16px;
-  color: #0f172a;
+  color: ${({ theme }) => theme.colors.secondary};
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   position: relative;
   cursor: grab;

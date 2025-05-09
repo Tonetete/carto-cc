@@ -9,6 +9,7 @@ export const theme: DefaultTheme = {
     background: "#fff",
     danger: "#e53935",
     disabled: "#ccc",
+    secondary: "#0f172a",
   },
   fontSizes: {
     xxs: "8px",

@@ -13,6 +13,7 @@ export interface ThemeType {
     background: string;
     danger: string;
     disabled: string;
+    secondary: string;
   };
   fontSizes: {
     xxs: string;
