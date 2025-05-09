@@ -51,3 +51,23 @@ Description: Worldwide data, but includes recent quakes near SF. You can filter 
    https://data.sfgov.org/resource/2zah-tuvt.geojson?$limit=100
 
 Description: Locations of publicly maintained trees in San Francisco. This endpoint uses Socrata API so you can paginate or filter.
+
+
+## Approach and pending work
+
+We followed an atomic design pattern to organize the components. This pattern follow a bottom-to-top approach to reduce complexity
+and the increase of reusability.
+
+We introduced zustand as a state management library to manage the application state. This library provides a simple and efficient way
+to manage this logic. When the application starts it will load the state from the local storage. If there is no state in the local storage
+it will use the default state. Whenever there's a change in the editor, state will be saved to the local storage. Also the map component
+will be updated with the new state and render the geojson layers accordingly. 
+
+As the layer nodes are positioned vertically, it will prevail the order of the nodes and how the layers are stacked up one on top of another.
+
+## Future work
+
+Improve the testing by adding E2E tests. We followed a top to bottom approach prevailing the usability of the application and those elements
+crucial for the user experience by choosing integration tests over unit tests following the trophy rule. You can learn more about here: 
+
+https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications
